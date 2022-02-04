@@ -54,6 +54,11 @@ function App() {
     fetchTodos();
   }
 
+  function imageAltValue(todo) {
+    const todoArr = typeof todo === 'string' && todo.split('-');
+    return todoArr[0] + ' photo';
+  }
+
   return (
     <div className="App">
       <h1>My Todos App</h1>
@@ -80,7 +85,7 @@ function App() {
               <p>{todo.description}</p>
               <button onClick={() => deleteTodo(todo)}>Delete todo</button>
               {
-                todo.image && <img src={todo.image} style={{width: 400}} />
+                todo.image && <img src={todo.image} alt={imageAltValue(todo.image)} style={{width: 400}} />
               }
             </div>
           ))
